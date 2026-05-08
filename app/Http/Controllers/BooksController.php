@@ -100,22 +100,22 @@ class BooksController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'string', 'max:255'],
-            'author' => ['required', 'string', 'max:255'],
-            'isbn' => ['required', 'string', 'max:20', 'unique:books,isbn,' . $id],
-            'publish_year' => ['required', 'integer', 'digits:4'],
-            'publisher' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:categories,id']
+            'author' => ['string', 'max:255'],
+            'isbn' => ['string', 'max:20', 'unique:books,isbn,' . $id],
+            'publish_year' => ['integer', 'digits:4'],
+            'publisher' => ['string', 'max:255'],
+            'category_id' => ['exists:categories,id']
         ], [
             'title.required' => 'Field title harus diisi',
-            'author.required' => 'Field author harus diisi',
-            'isbn.required' => 'Field isbn harus diisi',
-            'isbn.unique' => 'ISBN sudah terdaftar, silakan gunakan ISBN lain',
-            'publish_year.required' => 'Field publish_year harus diisi',
-            'publish_year.integer' => 'Field publish_year harus berupa angka',
-            'publish_year.digits' => 'Field publish_year harus terdiri dari 4 digit',
-            'publisher.required' => 'Field publisher harus diisi',
-            'category_id.required' => 'Field category_id harus diisi',
-            'category_id.exists' => 'Kategori tidak ditemukan, pastikan category_id valid'
+            // 'author.required' => 'Field author harus diisi',
+            // 'isbn.required' => 'Field isbn harus diisi',
+            // 'isbn.unique' => 'ISBN sudah terdaftar, silakan gunakan ISBN lain',
+            // 'publish_year.required' => 'Field publish_year harus diisi',
+            // 'publish_year.integer' => 'Field publish_year harus berupa angka',
+            // 'publish_year.digits' => 'Field publish_year harus terdiri dari 4 digit',
+            // 'publisher.required' => 'Field publisher harus diisi',
+            // 'category_id.required' => 'Field category_id harus diisi',
+            // 'category_id.exists' => 'Kategori tidak ditemukan, pastikan category_id valid'
         ]);
 
         if ($validator->fails()) {
